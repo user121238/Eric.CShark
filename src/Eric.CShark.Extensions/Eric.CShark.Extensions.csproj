@@ -5,11 +5,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<PackageIcon>icon.jpg</PackageIcon>
-		<FileVersion>1.0.0.1</FileVersion>
+		<FileVersion>1.0.0.2</FileVersion>
 		<RepositoryUrl>https://github.com/user121238/Eric.CShark.git</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageTags>tool;辅助;拓展</PackageTags>
 		<LangVersion>11</LangVersion>
+		<Version>1.0.0.2</Version>
+		<PackageProjectUrl>https://github.com/user121238/Eric.CShark.git</PackageProjectUrl>
+		
 	</PropertyGroup>
 
 	<ItemGroup>
