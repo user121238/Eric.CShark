@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <Nullable>enable</Nullable>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
+    <FileVersion>1.0.0.2</FileVersion>
     <PackageIcon>icon.jpg</PackageIcon>
     <RepositoryUrl>https://github.com/user121238/Eric.CShark.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
