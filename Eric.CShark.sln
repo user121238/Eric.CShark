@@ -14,6 +14,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eric.CShark.Extensions", "s
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Eric.CShark.Tests", "test\Eric.CShark.Tests\Eric.CShark.Tests.csproj", "{E7DC0A17-6FA2-40B1-818B-D5E421C2EE8C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{921E18F8-1DA2-4F95-8AF4-B11C9FA738BB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuildFiles", "MSBuildFiles", "{60AD7AA0-BB46-40BA-9B3B-CA375D4A776D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{60AD7AA0-BB46-40BA-9B3B-CA375D4A776D} = {921E18F8-1DA2-4F95-8AF4-B11C9FA738BB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8CBD4E96-EC21-4D3E-9EE2-40F6BE5BDF53}
