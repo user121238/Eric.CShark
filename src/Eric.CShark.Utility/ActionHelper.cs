@@ -49,5 +49,18 @@ namespace Eric.CShark.Utility
 				action.Invoke();
 			}, null, delayMilliseconds, Timeout.Infinite);
 		}
+
+
+		public Action GetDebounceAction(Action action, int delayMilliseconds)
+		{
+			void DebounceAction() => Debounce(action, delayMilliseconds);
+			return DebounceAction;
+		}
+
+		public Action GetThrottleAction(Action action, int delayMilliseconds)
+		{
+			void ThrottleAction() => Throttle(action, delayMilliseconds);
+			return ThrottleAction;
+		}
 	}
 }
