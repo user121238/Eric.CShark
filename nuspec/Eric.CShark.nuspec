@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>Eric.CShark</id>
+        <version>1.0.0.3</version>
+        <authors>Eric</authors>
+        <owners>Eric</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>工具;扩展;辅助</description>
+        <icon>images\icon.jpg</icon>
+        <projectUrl>https://github.com/user121238/Eric.CShark.git</projectUrl>
+		<repository type="git" url="https://github.com/user121238/Eric.CShark.git" />
+		
+		<dependencies>
+   
+
+    <group targetFramework="netstandard2.1">
+    </group>
+</dependencies>
+		
+    </metadata>
+	
+
+    <files>
+        <file src="..\src\Eric.CShark.Extensions\bin\Release\netstandard2.1\Eric.CShark.Extensions.dll" target="lib\netstandard2.1" />
+        <file src="..\src\Eric.CShark.Utility\bin\Release\netstandard2.1\Eric.CShark.Utility.dll" target="lib\netstandard2.1" />
+		<file src="..\images\icon.jpg" target="images\" />
+    </files>
+</package>
