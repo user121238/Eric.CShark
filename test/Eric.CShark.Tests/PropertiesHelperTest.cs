@@ -19,6 +19,7 @@ namespace Eric.CShark.Tests
         }
 
 
+
         /// <summary>
         /// 测试重置所有字段
         /// </summary>
@@ -83,5 +84,108 @@ namespace Eric.CShark.Tests
 
             Assert.AreEqual("don't reset", testObj.ExcludeProperty);
         }
+
+        /// <summary>
+        /// 深度克隆测试类
+        /// </summary>
+        [Serializable]
+        private class DeepCloneTestClass : IEquatable<DeepCloneTestClass>
+        {
+            public int Value { get; set; }
+            public string Name { get; set; }
+
+            public List<DeepCloneTestClass> List { get; set; } = new();
+
+
+
+            public override bool Equals(object? obj)
+            {
+                return obj is DeepCloneTestClass other && Value == other.Value && Name == other.Name && List.SequenceEqual(other.List);
+            }
+
+            public bool Equals(DeepCloneTestClass? other)
+            {
+                return other != null && Value == other.Value && Name == other.Name && List.SequenceEqual(other.List);
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(Value, Name, List);
+            }
+        }
+
+
+        /// <summary>
+        /// 二进制深度克隆测试
+        /// </summary>
+        [TestMethod]
+        public void Test_DeepCloneWithBinarySerialize()
+        {
+            var testClass = new DeepCloneTestClass
+            {
+                Value = 0,
+                Name = "test"
+            };
+
+            testClass.List.Add(new DeepCloneTestClass
+            {
+                Value = 2,
+                Name = "test1"
+            });
+
+            var cloned = testClass.DeepCloneWithBinarySerialize();
+
+            Assert.IsNotNull(cloned);
+
+            Assert.IsFalse(object.ReferenceEquals(testClass, cloned));
+            Assert.IsFalse(object.ReferenceEquals(testClass.List, cloned.List));
+
+            Assert.AreEqual(testClass.Value, cloned.Value);
+
+            // Assert.AreEqual(testClass.List, cloned.List);
+            Assert.IsTrue(testClass.List.SequenceEqual(cloned.List));
+
+            cloned.List.Add(new DeepCloneTestClass());
+
+            Assert.AreNotEqual(testClass.List.Count, cloned.List.Count);
+
+        }
+
+        /// <summary>
+        /// Json序列化深度克隆测试
+        /// </summary>
+        [TestMethod]
+        public void Test_DeepCloneWithJsonSerialize()
+        {
+            var testClass = new DeepCloneTestClass
+            {
+                Value = 0,
+                Name = "test"
+            };
+
+            testClass.List.Add(new DeepCloneTestClass
+            {
+                Value = 2,
+                Name = "test1"
+            });
+
+            var cloned = testClass.DeepCloneWithJsonSerialize();
+
+            Assert.IsNotNull(cloned);
+
+            Assert.IsFalse(object.ReferenceEquals(testClass, cloned));
+            Assert.IsFalse(object.ReferenceEquals(testClass.List, cloned.List));
+
+            Assert.AreEqual(testClass.Value, cloned.Value);
+
+            // Assert.AreEqual(testClass.List, cloned.List);
+            Assert.IsTrue(testClass.List.SequenceEqual(cloned.List));
+
+            cloned.List.Add(new DeepCloneTestClass());
+
+            Assert.AreNotEqual(testClass.List.Count, cloned.List.Count);
+        }
+
+
     }
 }

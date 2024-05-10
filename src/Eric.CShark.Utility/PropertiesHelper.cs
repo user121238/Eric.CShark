@@ -1,5 +1,10 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Eric.CShark.Utility
 {
@@ -28,5 +33,37 @@ namespace Eric.CShark.Utility
 
             customSettings?.Invoke(obj);
         }
+
+
+
+
+        public static T DeepCloneWithJsonSerialize<T>(this T obj) where T : class
+        {
+            if (obj is null)
+            {
+                throw new ArgumentNullException($"{nameof(obj)} is null");
+            }
+            var json = JsonSerializer.Serialize(obj);
+            var result = JsonSerializer.Deserialize<T>(json);
+            if (result is null)
+            {
+                throw new InvalidCastException();
+            }
+            return result;
+        }
+
+
+        public static T DeepCloneWithBinarySerialize<T>(this T obj) where T : class
+        {
+            var ms = new MemoryStream();
+            var formatter = new BinaryFormatter();
+            formatter.Serialize(ms, obj);
+            ms.Position = 0;
+            var result = (T)formatter.Deserialize(ms);
+            ms.Close();
+            return result;
+        }
+
+
     }
 }
